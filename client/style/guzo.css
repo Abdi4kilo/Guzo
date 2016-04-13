@@ -1,5 +1,5 @@
 .space-from-top{
-	margin-top:50px;
+	margin-top:10px;
 }
 .carpool-form{
 	border: 1px solid black; 
@@ -7,4 +7,16 @@
 	-moz-box-shadow: 10px 17px 23px -2px rgba(0,0,0,0.51);
 	box-shadow: 10px 17px 23px -2px rgba(0,0,0,0.51);
 	padding:50px;
+	margin-top: 100px;
+}
+#map {
+    width: 500px;
+    height: 400px;
+    margin-bottom: 10px;
+ }
+.list{
+	text-align: center;
+} 
+.list-container{
+text-align: center;	
 }
