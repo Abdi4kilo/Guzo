@@ -6,8 +6,11 @@
 	-webkit-box-shadow: 10px 17px 23px -2px rgba(0,0,0,0.51);
 	-moz-box-shadow: 10px 17px 23px -2px rgba(0,0,0,0.51);
 	box-shadow: 10px 17px 23px -2px rgba(0,0,0,0.51);
-	padding:50px;
-	margin-top: 100px;
+	padding-left:10px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	padding-right:10px; 
+	margin-top: 50px;
 }
 #map {
     width: 500px;
@@ -20,3 +23,4 @@
 .list-container{
 text-align: center;	
 }
+
