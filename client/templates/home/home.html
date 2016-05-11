@@ -48,7 +48,7 @@
 	  				   </div>
   				   </div>
 				</div>
-				<button id="go">Go</button>
+				<button id="go" class="submit-route">Go</button>
 			</form>
 		</div>
 		<div class="medium-6 columns space-from-top">
@@ -70,30 +70,15 @@
 			    </tr>
 			  </thead>
 			  <tbody>
+			  {{#each routes}}
 			    <tr>
-			      <td>Bridgeport</td>
-			      <td>New York City</td>
-			      <td>7/8/2016</td>
+			      <td>{{start}}</td>
+			      <td>{{end}}</td>
+			      <td>{{createdAt}}</td>
 			      <td>details</td>
 			    </tr>
-			     <tr>
-			      <td>Bridgeport</td>
-			      <td>New York City</td>
-			      <td>7/8/2016</td>
-			      <td>details</td>
-			    </tr>
-			     <tr>
-			      <td>Bridgeport</td>
-			      <td>New York City</td>
-			      <td>7/8/2016</td>
-			      <td>details</td>
-			    </tr>
-			     <tr>
-			      <td>Bridgeport</td>
-			      <td>New York City</td>
-			      <td>7/8/2016</td>
-			      <td>details</td>
-			    </tr>
+			   {{/each}}
+			     
 			  </tbody>
 			</table>
 		 </div>
