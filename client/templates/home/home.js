@@ -17,7 +17,14 @@ if(Meteor.isClient){
 	});
 	Template.home.events({
 	"click .submit-route":function(event){
-		Meteor.call('checkTwitter');
+		var result=[];
+		var destination=document.getElementById('des').value;
+		var departuer=document.getElementById('dep').value;
+		//result=Meteor.call('checkTwitter',destination,departuer);
+		
+		Meteor.call('checkTwitter',destination,departuer,function(err, users) {
+  			console.log(users);
+		});
 	}
 	});
 }
