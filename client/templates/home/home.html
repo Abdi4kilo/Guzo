@@ -58,8 +58,9 @@
 	</div>
 
 	<div class="row list-container">
-		<h1>New Routes in your area</h1>	
-		 <div class="small-8 large-centered columns list">
+		
+		 <div class="large-6 columns">
+		 <h2>New Drivers Joining</h2>	
 		 	<table>
 			  <thead>
 			    <tr>
@@ -70,14 +71,41 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			  {{#each routes}}
+
+			   {{#each routes}}
 			    <tr>
 			      <td>{{start}}</td>
 			      <td>{{end}}</td>
 			      <td>{{createdAt}}</td>
 			      <td>details</td>
 			    </tr>
-			   {{/each}}
+			   {{/each}} 
+			     
+			  </tbody>
+			</table>
+		 </div>
+		
+		 <div class="large-6 columns">
+		  <h2>Hellp</h2>	
+		 	<table>
+			  <thead>
+			    <tr>
+			      <th width="150">Departure</th>
+			      <th width="150">Destination</th>
+			      <th width="150">Date and time</th>
+			      <th width="150">Details</th>
+			    </tr>
+			  </thead>
+			  <tbody id="bestRoutes">
+
+			    {{#each session}}
+			    <tr>
+			      <td>{{start}}</td>
+			      <td>{{end}}</td>
+			      <td>{{createdAt}}</td>
+			      <td>details</td>
+			    </tr>
+			   {{/each}} 
 			     
 			  </tbody>
 			</table>
