@@ -86,7 +86,7 @@
 		 </div>
 		
 		 <div class="large-6 columns">
-		  <h2>Hellp</h2>	
+		  <h2>Best Routes</h2>	
 		 	<table>
 			  <thead>
 			    <tr>
@@ -97,19 +97,17 @@
 			    </tr>
 			  </thead>
 			  <tbody id="bestRoutes">
-
-			    {{#each session}}
-			    <tr>
-			      <td>{{start}}</td>
-			      <td>{{end}}</td>
-			      <td>{{createdAt}}</td>
-			      <td>details</td>
-			    </tr>
-			   {{/each}} 
-			     
+				{{#each session}}
+				<tr>
+					<td>{{this.start}}</td>	
+					<td>{{this.end}}</td>	
+					<td>{{this.createdAt}}</td>	
+					<td>{{this.distance}}</td>
+				</tr>
+				{{/each}}  
 			  </tbody>
 			</table>
-		 </div>
+		</div>
 	</div>
  
 	
