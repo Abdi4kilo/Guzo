@@ -3,7 +3,7 @@ if(Meteor.isClient){
 	
 	Template.home.helpers({
 		routes: function(){
-			 return	Routes.find({},{sort:{createdAt:-1}});
+			 return	Routes.find({},{sort:{travelDate:-1}});
 		},
 		session: function(){
 			if(Session.get('Abdi')==="" || Session.get('Abdi')==null){
@@ -19,9 +19,9 @@ if(Meteor.isClient){
 				var distance=[];
 				var destination=document.getElementById('des').value;
 				var departuer=document.getElementById('dep').value;
-				Meteor.call('checkTwitter',destination,departuer,function(err, closestRoutes) {
-				Session.set('Abdi',closestRoutes)
-			});
+				Meteor.call('getShortest',departuer,destination,function(err, closestRoutes) {
+					Session.set('Abdi',closestRoutes)
+				});
 		}
 	});
 }
