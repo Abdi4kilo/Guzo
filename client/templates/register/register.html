@@ -1,0 +1,42 @@
+<template name="register">
+	
+	<div class="large-3 large-centered columns">
+
+  <div class="login-box">
+
+  <div class="row">
+  <div class="large-12 columns">
+<!-- {{>meteorMessages}} -->
+    <form class="form-signup">
+       <div class="row">
+         <div class="large-12 columns">
+             <input type="text" name="full_name" placeholder="Full name" required />
+         </div>
+       </div>
+       <div class="row">
+         <div class="large-12 columns">
+             <input type="text" name="email" placeholder="email" required/>
+         </div>
+       </div>
+      <div class="row">
+         <div class="large-12 columns">
+             <input type="password" name="password" placeholder="Password" required/>
+         </div>
+      </div>
+        <div class="row">
+         <div class="large-12 columns">
+             <input type="password" name="password2" placeholder="Password Confirm" required/>
+         </div>
+      </div>
+      <div class="row">
+        <div class="large-12 large-centered columns">
+          <input type="submit" class="button expand" value="Register"/>
+        </div>
+      </div>
+      <p>Have an account?<a href="/login">Login</a></p>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+</template>

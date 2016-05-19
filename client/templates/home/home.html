@@ -6,12 +6,12 @@
 				<div class="large-12 columns">
 					<div class="row">
         				<div class="small-2 columns">
-          					<label for="right-label" class="right inline">Departuer</label>
+          					<label for="right-label" class="right inline">Departure</label>
         				</div>
 				        <div class="small-10 columns">
 				        	<div class="row collapse">
 						      	<div class="small-10 columns">
-						           <input id="dep" class="controls" type="text" placeholder="Search Box">
+						           <input id="dep" class="controls" type="text" placeholder="Please Enter your Departure">
 						        </div>
 						        <div class="small-2 columns">
 						          <span class="postfix"  onclick="getLocation()"><i class="fa fa-location-arrow fa-1x" aria-hidden="true"></i></span>
@@ -67,7 +67,7 @@
 			      <th width="150">Departure</th>
 			      <th width="150">Destination</th>
 			      <th width="150">Travel Date & time</th>
-			      <th width="150">Details</th>
+			      
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -77,7 +77,7 @@
 			      <td>{{start}}</td>
 			      <td>{{end}}</td>
 			      <td>{{travelDate}}</td>
-			      <td>details</td>
+			      
 			    </tr>
 			   {{/each}} 
 			     
@@ -93,7 +93,8 @@
 			      <th width="150">Departure</th>
 			      <th width="150">Destination</th>
 			      <th width="150">Date and time</th>
-			      <th width="150">Total Distance between you and driver</th>
+			      <th width="150">Extra distance Driver drives</th>
+			      <th width="150">Details</th>
 			    </tr>
 			  </thead>
 			  <tbody id="bestRoutes">
@@ -103,58 +104,11 @@
 					<td>{{this.end}}</td>	
 					<td>{{this.travelDate}}</td>	
 					<td>{{this.distance}}km</td>
+					<td><a href="#" class="detail" id="{{this._id}}">Driver Details</a></td>
 				</tr>
-				{{/each}}  
+				{{/each}}			
 			  </tbody>
 			</table>
 		</div>
 	</div>
- 
-	
-    <script>
-   $(function(){
-  $('#date').fdatepicker({
-		format: 'mm-dd-yyyy hh:ii',
-		disableDblClickSelection: true,
-		pickTime: true
-	});
-  });
-   
- function initMap() {
- 	var input = document.getElementById('dep');
-    var destination=document.getElementById('des');
-	var searchBox = new google.maps.places.SearchBox(input);
-	var serachBox2=new google.maps.places.SearchBox(destination);
-	var directionsService = new google.maps.DirectionsService;
-	var directionsDisplay = new google.maps.DirectionsRenderer;
-	var map = new google.maps.Map(document.getElementById('map'), {
-		zoom: 3,
-		center: {lat: 41.85, lng: -87.65}
-	});
-  directionsDisplay.setMap(map);
-  var onChangeHandler = function() {
-    calculateAndDisplayRoute(directionsService, directionsDisplay);
-  };
-  document.getElementById('go').addEventListener('click',function(event){
-  	event.preventDefault();
-  	onChangeHandler();
-  });
- }
-
-function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-  directionsService.route({
-    origin: document.getElementById('dep').value,
-    destination: document.getElementById('des').value,
-    travelMode: google.maps.TravelMode.DRIVING
-  }, function(response, status) {
-    if (status === google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    } else {
-      window.alert('Directions request failed due to ' + status);
-    }
-  });
-}
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFqA_wqLzyUdJsADQIHoHZjCCrDaTwN3s&libraries=places&callback=initMap"
-         async defer></script>
-</template>
+ </template>

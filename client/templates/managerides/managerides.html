@@ -1,0 +1,82 @@
+
+<template name="managerides">
+
+  <div class="large-7 columns">
+  <h2>Your Rides</h2>
+  <ul class="accordion" data-accordion>
+		{{#each myroutes}}
+			 {{> accordion}}
+
+		{{/each}}
+  </ul>
+	<h2>Rides you requested</h2>
+  <table>
+      <thead>
+        <tr>
+          <th width="150">Driver name</th>
+          <th width="150">Departuer</th>
+          <th width="150">Destination</th>
+          <th width="150">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each rides}}
+        {{>table}}
+      {{/each}}
+      </tbody>
+  </table>
+  </div>
+  <div class="large-5 columns">
+  {{>mapPostsList}}
+ 	</div>
+  
+</template>
+
+<template name="accordion">
+	
+  <li class="accordion-navigation">
+    <a href="#panel1a{{_id}}">{{start}}--{{end}}--{{travelDate}}</a>
+    <div id="panel1a{{_id}}" class="content">
+     		 	<table id="{{_id}}">
+  <caption>Request for rides</caption>
+  <tr>
+    <th scope="column">Name</th>
+    <th scope="column">Riders Start</th>
+    <th scope="column">Riders end</th>
+    <th scope="column">Accept</th>
+    <th scope="column">Decline</th>
+    <th scope="column">Test</th>
+
+  </tr>
+  {{#each hitchers}}
+ <tr id="{{this.hitcherId}}tr">
+ 	<td scope="row">{{this.hitchername}}</td>
+    <td scope="row">{{this.departuer}}</td>
+    <td scope="row">{{this.destination}}</td>
+    <td scope="row"><a href="#" class="button tiny">Accept</a></td>
+    <td scope="row"><a href="#" class="button tiny">Decline</a></td>
+    <td scope="row" id="{{this.hitcherId}}td"><a href="#" id="{{this.hitcherId}}"  class="button tiny submit">Test</a></td>
+  </tr>
+ {{/each}}
+</table>
+    </div>
+  </li>
+  
+</template>
+
+<template name="mapPostsList">
+  <div id="map"></div>
+ </template>
+
+
+ <template name="table">
+  
+    <tr>
+      <td>{{drivername}}</td>
+      <td>{{departuer}}</td>
+      <td>{{destination}}</td>
+      <td>{{status}}</td>
+    </tr>
+  
+  
+ </template>

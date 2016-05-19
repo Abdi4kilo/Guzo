@@ -1,17 +1,17 @@
 <template name="driver">
-	<div class="row">
+	<div>
 		<div class="medium-6 columns space-from-top carpool-form">
 			<form class="driver-routes">
 				<h3>Where are you going?</h3>
 				<div class="large-12 columns">
 					<div class="row">
         				<div class="small-2 columns">
-          					<label for="right-label" class="right inline">Departuer</label>
+          					<label for="right-label" class="right inline">Departure</label>
         				</div>
 				        <div class="small-10 columns">
 				        	<div class="row collapse">
 						      	<div class="small-10 columns">
-						           <input id="dep" class="controls" type="text" placeholder="Search Box">
+						           <input id="dep" class="controls" type="text" placeholder="Enter your Departure address">
 						        </div>
 						        <div class="small-2 columns">
 						          <span class="postfix"  onclick="getLocation()"><i class="fa fa-location-arrow fa-1x" aria-hidden="true"></i></span>
@@ -39,7 +39,7 @@
        				   <div class="small-10 columns">	
 						   <div class="row collapse">
 						      	<div class="small-9 columns">
-						          <input type="text" id="date" name="departue" placeholder="Please Enter your departuer date" />
+						          <input type="text" id="date" name="departue" placeholder="Please Enter your Departure date" />
 						        </div>
 						        <div class="small-3 columns">
 						          <span class="postfix">Calender</span>
@@ -48,63 +48,33 @@
 	  				   </div>
   				   </div>
 				</div>
+				<div class="large-12 columns">
+					<div class="row">
+        				<div class="small-2 columns">
+          					<label for="right-label" class="right inline">Car type</label>
+        				</div>
+				        <div class="small-10 columns">
+				          <input type="text" id="cartype" name="cartype" placeholder="Please Enter Your Car type">
+				        </div>
+      				</div>
+				</div>
+				<div class="large-12 columns">
+					<div class="row">
+        				<div class="small-2 columns">
+          					<label for="right-label" class="right inline">Number of Seats</label>
+        				</div>
+				        <div class="small-10 columns">
+				          <input type="text" id="numberseats" name="numberseats" placeholder="Number of Seats">
+				        </div>
+      				</div>
+				</div>
 				<button  class="submit-route" id="go">Go</button>
 			</form>
 		</div>
-		<div class="medium-6 columns space-from-top">
+		<div class="medium-6 columns space-from-top map-div">
 			<div id="map"></div>
 		</div>
 		<hr>
 	</div>
-
-	
- 	
-	
-    <script>
-   $(function(){
-  $('#date').fdatepicker({
-		format: 'mm-dd-yyyy hh:ii',
-		disableDblClickSelection: true,
-		pickTime: true
-	});
-  });
-   
- function initMap() {
- 	var input = document.getElementById('dep');
-    var destination=document.getElementById('des');
-	var searchBox = new google.maps.places.SearchBox(input);
-	var serachBox2=new google.maps.places.SearchBox(destination);
-	var directionsService = new google.maps.DirectionsService;
-	var directionsDisplay = new google.maps.DirectionsRenderer;
-	var map = new google.maps.Map(document.getElementById('map'), {
-		zoom: 3,
-		center: {lat: 41.85, lng: -87.65}
-	});
-  directionsDisplay.setMap(map);
-  var onChangeHandler = function() {
-    calculateAndDisplayRoute(directionsService, directionsDisplay);
-  };
-  document.getElementById('go').addEventListener('click',function(event){
-  	event.preventDefault();
-  	onChangeHandler();
-  });
- }
-
-function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-  directionsService.route({
-    origin: document.getElementById('dep').value,
-    destination: document.getElementById('des').value,
-    travelMode: google.maps.TravelMode.DRIVING
-  }, function(response, status) {
-    if (status === google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    } else {
-      window.alert('Directions request failed due to ' + status);
-    }
-  });
-}
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFqA_wqLzyUdJsADQIHoHZjCCrDaTwN3s&libraries=places&callback=initMap"
-         async defer></script>
 </template>
 
