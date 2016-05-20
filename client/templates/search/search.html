@@ -1,0 +1,86 @@
+<template name="search">
+	<div class="row carpool-form">
+		<div class="medium-12 columns space-from-top">
+			<div id="map"></div>
+			
+		</div>
+		<hr>
+		<div class="medium-12 columns formsearch carpool-search">
+			 <FORM>
+				 <div class="large-4 columns">
+			      <label>Departure
+			         <input id="dep" class="controls"  type="text" placeholder="Please Enter your Departure">
+			      </label>
+			    </div>
+			    <div class="large-4 columns">
+			      <label>Destination
+			       <input type="text" id="des"  placeholder="Please Enter Your Destination">
+			      </label>
+			    </div>
+			    <div class="large-4 columns">
+			      <div class="row collapse">
+					<label>Date</label>			      
+			        <div class="small-10 columns">
+			         <input type="text" id="date"  placeholder="Please Enter your Date" />
+			        </div>
+			        <div class="small-2 columns">
+			          <a href="#" id="go" class="submit-route right button postfix">Go</a>
+			        </div>
+    			  </div>
+			    </div>
+	    	 </FORM>
+	   </div>
+			
+	</div>
+	<div class="row center-table newroutes">
+	<p>Best Routes</p>
+	<table>
+	 	<thead>
+		    <tr>
+		       <th width="182">Departure</th>
+		       <th width="69"></th>
+			   <th width="175">Destination</th>
+			   <th width="206">Date and time</th>
+			   <th width="225">Extra distance Driver drives</th>
+			   <th width="170">Details</th>
+			   <th width="50">Request Seat</th>
+		     </tr>
+		  </thead>
+		  <tbody id="bestRoutes">
+			{{#each session}}
+			<tr>
+				<td>{{this.start}}</td>	
+				 <th><i class="fa fa-long-arrow-right fa-3x" aria-hidden="true"></i></th>
+				<td>{{this.end}}</td>	
+				<td>{{this.travelDate}}</td>	
+				<td>{{this.distance}}km</td>
+				 {{>modal}}
+
+			</tr>
+			{{/each}}		
+	  	   </tbody>
+	</table>
+	</div>
+	<script type="text/javascript">
+		$(document).foundation('reflow');
+	</script>
+	 
+</template>
+
+<template name="modal">
+	
+<td><a href="#" class="detail" data-reveal-id="{{this._id}}">Driver Details</a></td>
+<td><a href="#" class="button request tiny" id="{{this._id}}-req">Request a seat</a></td>
+<div id="{{this._id}}" class="reveal-modal" width="200px" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <ul class="pricing-table spacing">
+	  <li class="title">Name: {{this.drivername}}</li>
+	  <li class="price">Car type: {{this.cartype}}</li>
+	  <li class="bullet-item">Departuer: {{this.start}}</li>
+	  <li class="bullet-item">Destination: {{this.end}}</li>
+	  <li class="bullet-item">Availble Seats: {{this.leftseats}}</li>
+	  <li class="bullet-item">Travel Date: {{this.travelDate}}</li>
+	</ul>
+	
+	<a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+</template>

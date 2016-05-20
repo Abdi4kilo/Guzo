@@ -12,18 +12,21 @@
     
 
     <!-- Left Nav Section -->
-    <ul class="left">
+    <ul>
       <li><a href="/">Home</a></li>
+      <li><a href="/search">Search</a></li>
       {{#if currentUser}}
-      <li><a href="#" class="logout-btn">logout</a></li>
-      <li><a href="/managerides">Requested Rides</a></li>
+       <li><a href="/managerides">Requested Rides</a></li>
        <li><a href="/driver">Share your ride</a></li>
+       <ul class="right">
        <li><a href="#" >Hello user {{currentUser.profile.full_name}}</a></li>
-      {{else}}
-      <li><a href="/login">login</a></li>
-      <li><a href="/register">Register</a></li>
-      {{/if}}
-    </ul>
+       <li><a href="#" class="logout-btn">logout</a></li>
+       </ul>
+        {{else}}
+        <li><a href="/login">login</a></li>
+        <li><a href="/register">Register</a></li>
+        {{/if}}
+      </ul>
   </section>
 </nav>
 </template>

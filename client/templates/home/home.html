@@ -1,114 +1,84 @@
 <template name="home">
-	<div class="row">
-		<div class="medium-6 columns space-from-top carpool-form">
+<div class="large-12 columns board space-from-top ">
+		<div class="medium-6 columns  large-offset-6 carpool-form">
 			<form>
-				<h3>Where are you going?</h3>
-				<div class="large-12 columns">
-					<div class="row">
-        				<div class="small-2 columns">
-          					<label for="right-label" class="right inline">Departure</label>
-        				</div>
-				        <div class="small-10 columns">
-				        	<div class="row collapse">
-						      	<div class="small-10 columns">
-						           <input id="dep" class="controls" type="text" placeholder="Please Enter your Departure">
-						        </div>
-						        <div class="small-2 columns">
-						          <span class="postfix"  onclick="getLocation()"><i class="fa fa-location-arrow fa-1x" aria-hidden="true"></i></span>
-						        </div>
-		  				   </div>
-				         
-				        </div>
-      				</div>
-				</div>
-				<div class="large-12 columns">
-					<div class="row">
-        				<div class="small-2 columns">
-          					<label for="right-label" class="right inline">Destination</label>
-        				</div>
-				        <div class="small-10 columns">
-				          <input type="text" id="des" placeholder="Please Enter Your Destination">
-				        </div>
-      				</div>
-				</div>
-				<div class="large-12 columns">
-					<div class="row">	
-					   <div class="small-2 columns">
-          					<label for="right-label" class="right inline">Date</label>
-       				   </div>	
-       				   <div class="small-10 columns">	
-						   <div class="row collapse">
-						      	<div class="small-9 columns">
-						          <input type="text" id="date" placeholder="Please Enter your departuer date" />
-						        </div>
-						        <div class="small-3 columns">
-						          <span class="postfix">Calender</span>
-						        </div>
+				<fieldset>
+		    		<legend>Where are you going?</legend>
+					<div class="large-12 columns">
+						<div class="row">
+	        				<div class="small-2 columns">
+	          					<label for="right-label" class="right inline">Departure</label>
+	        				</div>
+					        <div class="small-10 columns">
+					        	<div class="row collapse">
+							      	<div class="small-10 columns">
+							           <input id="dep" class="controls" type="text" placeholder="Please Enter your Departure">
+							        </div>
+							        <div class="small-2 columns">
+							          <span class="postfix"  onclick="getLocation()"><i class="fa fa-location-arrow fa-1x" aria-hidden="true"></i></span>
+							        </div>
+			  				   </div>
+					         
+					        </div>
+	      				</div>
+					</div>
+					<div class="large-12 columns">
+						<div class="row">
+	        				<div class="small-2 columns">
+	          					<label for="right-label" class="right inline">Destination</label>
+	        				</div>
+					        <div class="small-10 columns">
+					          <input type="text" id="des" placeholder="Please Enter Your Destination">
+					        </div>
+	      				</div>
+					</div>
+					<div class="large-12 columns">
+						<div class="row">	
+						   <div class="small-2 columns">
+	          					<label for="right-label" class="right inline">Date</label>
+	       				   </div>	
+	       				   <div class="small-10 columns">	
+							   <div class="row collapse">
+							      	<div class="small-9 columns">
+							          <input type="text" id="date" placeholder="Please Enter your departuer date" />
+							        </div>
+							        <div class="small-3 columns">
+							          <span class="postfix">Calender</span>
+							        </div>
+			  				   </div>
 		  				   </div>
 	  				   </div>
-  				   </div>
-				</div>
-				<button id="go" class="submit-route">Go</button>
+					</div>
+					<button id="go" class="submit-route right">Go</button>
+				</fieldset>
 			</form>
 		</div>
-		<div class="medium-6 columns space-from-top">
-			<div id="map"></div>
-		</div>
-		<hr>
 	</div>
+	<div class="row center-table newroutes">
+	<p>New Routes</p>
+	<table>
+	 	<thead>
+		    <tr>
+		      <th width="150">Departure</th>
+		      <th width="50"></th>
+		      <th width="150">Destination</th>
+		      <th width="150">Travel Date & time</th>
+		      <th width="150">Seats Availble</th>
+		    </tr>
+		  </thead>
+		  <tbody>
 
-	<div class="row list-container">
-		
-		 <div class="large-6 columns">
-		 <h2>New Drivers Joining</h2>	
-		 	<table>
-			  <thead>
-			    <tr>
-			      <th width="150">Departure</th>
-			      <th width="150">Destination</th>
-			      <th width="150">Travel Date & time</th>
-			      
-			    </tr>
-			  </thead>
-			  <tbody>
-
-			   {{#each routes}}
-			    <tr>
-			      <td>{{start}}</td>
-			      <td>{{end}}</td>
-			      <td>{{travelDate}}</td>
-			      
-			    </tr>
-			   {{/each}} 
-			     
-			  </tbody>
-			</table>
-		 </div>
-		
-		 <div class="large-6 columns">
-		  <h2>Best Routes</h2>	
-		 	<table>
-			  <thead>
-			    <tr>
-			      <th width="150">Departure</th>
-			      <th width="150">Destination</th>
-			      <th width="150">Date and time</th>
-			      <th width="150">Extra distance Driver drives</th>
-			      <th width="150">Details</th>
-			    </tr>
-			  </thead>
-			  <tbody id="bestRoutes">
-				{{#each session}}
-				<tr>
-					<td>{{this.start}}</td>	
-					<td>{{this.end}}</td>	
-					<td>{{this.travelDate}}</td>	
-					<td>{{this.distance}}km</td>
-					<td><a href="#" class="detail" id="{{this._id}}">Driver Details</a></td>
-				</tr>
-				{{/each}}			
-			  </tbody>
-			</table>
-		</div>
+		   {{#each routes}}
+		    <tr>
+		      <td>{{start}}</td>
+		      <th><i class="fa fa-long-arrow-right fa-3x" aria-hidden="true"></i></th>
+		      <td>{{end}}</td>
+		      <td>{{travelDate}}</td>
+		      <td>{{leftseats}}</td>
+		    </tr>
+		   {{/each}} 
+		     
+		  </tbody>
+	</table>
 	</div>
  </template>
